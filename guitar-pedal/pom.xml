@@ -8,13 +8,36 @@
 	<packaging>jar</packaging>
 
 	<name>guitar-pedal</name>
-	<!-- 
-	<url>http://maven.apache.org</url>
-	-->
+	<!-- <url>http://maven.apache.org</url> -->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<phase>clean</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<groupId>be.tarsos.dsp</groupId>
+							<artifactId>tarsosDSP</artifactId>
+							<version>2.4</version>
+							<packaging>jar</packaging>
+							<file>${basedir}/lib/tarsosDSP-latest.jar</file>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -23,11 +46,10 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/be.hogent.tarsos.dsp/tarsosdsp -->
 		<dependency>
-			<groupId>be.hogent.tarsos.dsp</groupId>
-			<artifactId>tarsosdsp</artifactId>
-			<version>1.7</version>
+			<groupId>be.tarsos.dsp</groupId>
+			<artifactId>tarsosDSP</artifactId>
+			<version>2.4</version>
 		</dependency>
 	</dependencies>
 </project>
